@@ -1,6 +1,6 @@
 pipeline{
     agent any
-    
+
     environment {
         DOCKER_REPO = "sarojbehera"
         DOCKER_USER = "node-app"
@@ -93,5 +93,6 @@ pipeline{
                 steps {
                         sh 'kubectl apply -f deployment.yaml' 
                 }
+            }
         }
     }
