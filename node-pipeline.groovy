@@ -91,7 +91,12 @@ pipeline{
             // }
             stage('Kubernetes Deployment') {
                 steps {
-                        sh 'kubectl apply -f deployment.yaml' 
+                    sh '''
+                    sed -i "s|image:.*|image: ${DOCKER_REPO}/${DOCKER_USER}:${BUILD_NUMBER}|g" K8s/deployment.yaml
+                    '''
+                    
+                    sh 'cat K8s/deployment.yaml' 
+                    
                 }
             }
         }
