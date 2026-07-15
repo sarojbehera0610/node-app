@@ -92,10 +92,10 @@ pipeline{
             stage('Kubernetes Deployment') {
                 steps {
                     sh '''
-                    sed -i "s|image:.*|image: ${DOCKER_REPO}/${DOCKER_USER}:${BUILD_NUMBER}|g" K8s/deployment.yaml
+                    sed -i "s|image:.*|image: ${DOCKER_REPO}/${DOCKER_USER}:${BUILD_NUMBER}|g" deployment.yaml
                     '''
-                    
-                    sh 'cat K8s/deployment.yaml' 
+
+                    sh 'cat deployment.yaml' 
                     
                 }
             }
